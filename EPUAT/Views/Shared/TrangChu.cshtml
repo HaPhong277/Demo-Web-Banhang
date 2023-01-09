@@ -1,0 +1,212 @@
+﻿@*@model List<EPUAT.Models.SanPham>*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Assets/Admin/css/index.css" rel="stylesheet">
+    <link href="~/Assets/Admin/css/fontawesome-free-6.2.1/css/all.min.css" rel="stylesheet">
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>*@
+    <style>
+        .footer1 {
+            width: 100%;
+            height: 360px;
+            background: url(/images/bkg_footer.jpg) no-repeat center center fixed;
+            background-size: cover;
+            border-top: 1px solid #e84447;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:100%;">
+        <div>
+            <div class="top">
+                <div class="top_contain">
+                    <div>
+
+                        <img src="~/images/logo.png" alt="logo" class="logo">
+                    </div>
+                    <div class="heard_search">
+                        <input id="searchValue" onkeyup="searchList()" type="text" class="form-control" placeholder="Tìm kiếm">
+                        <button class="d_btn-search btn "><i class="fas fa-search" style="color: white;"></i></button>
+                    </div>
+                    <a class="cart" href="/Cart/ShowToCart">
+                        <div class="cart_contain">
+                            <i class="icon fa-sharp fa-solid fa-cart-shopping"></i>
+                            <p class="text  ">GIỎ HÀNG:</p>
+                            <p>@Html.Action("BagCart", "Cart")</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <header>
+                <!-- <div class="narbar"> -->
+                <div class="narbar_contain">
+                    <ul>
+                        <li><a class="active" href="/Trangchu/index">TRANG  CHỦ</a></li>
+                        <li><a href="#">GIỚI THIỆU</a></li>
+                        <li class="menu">
+                            <a  href="/Trangchu/SanPham">
+                               
+                                SẢN PHẨM <i style="font-size: 0.8rem;"
+                                            class="fa-solid fa-angle-down"></i>
+                            </a>
+                            <div class="check">
+                                <div class="option">
+                                    <a style="color: black;" href="/Trangchu/SanPham">Màn Hình Xe Hơi</a>
+                                </div>
+                                <div class="option">
+                                    <a style="color: black;" href="/Trangchu/SanPham1">CAMERA 360</a>
+                                </div>
+                                <div class="option">
+                                    <a style="color: black;" href="/Trangchu/SanPham2">CAMERA HÀNH TRÌNH</a>
+                                </div>
+                                <div class="option">
+                                    <a style="color: black;" href="/Trangchu/SanPham3">CAMERA LÙI</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">BLOGS</a></li>
+                        <li><a href="#">LIÊN HỆ</a></li>
+                    </ul>
+                </div>
+                <!-- </div> -->
+            </header>
+        </div>
+        <div class="body">
+            @RenderBody()
+        </div>
+        <div class="footer1">
+            <div class="footer_contain">
+                <div class="item1">
+                    <div>
+                        <img src="~/images/logo.png" alt="logo" style="width:280px;height:150px">
+                    </div>
+                    <div class="box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="box_text">319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
+                    </div>
+                    <div class="box" style="width:40%;">
+                        <i class="fa-solid fa-phone"></i>
+                        <p class="box_text"><a href="tel:0769220162">076 922 0162</a></p>
+                    </div>
+                    <div class="box" style="width:58%;">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p class="box_text"><a href="mailto:demonhunterg@gmail.com">demonhunterg@gmail.com</a></p>
+                    </div>
+                    <div class="box" style="width:40%;">
+                        <i class="fa-brands fa-skype"></i>
+                        <p class="box_text"><a href="skype:demonhunterp?chat">demonhunterp</a></p>
+                    </div>
+                </div>
+                <div class="item2">
+                    <div class="item2_title">
+                        <p class="item2_text">MENU</p>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Trang Chủ</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Giới Thiệu</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Cửa Hàng</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Tin Tức</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Liên hệ</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item2">
+                    <div class="item2_title">
+                        <p class="item2_text">DANH MỤC</p>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Camera 360</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Camera hành trìnhtrình</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Camera lùi</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <i class="fa-solid fa-play"></i>
+                            <p style="margin-left: 10px;">Màn hình xe hơi</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item3">
+                    <div class="item3_title">
+                        <p class="item2_text">DANH MỤC</p>
+                    </div>
+                    <div><p class="box_text">Đăng ký để nhận được được thông tin mới nhất từ chúng tôi.</p></div>
+                    <div class="send_email">
+                        <input type="text" class="form" placeholder="Email">
+                        <button class="d_btn-email btnemail "><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <div class="item3_icon">
+                        <i class="color fa-brands fa-facebook-f"></i>
+                        <i class="color1 fa-brands fa-instagram"></i>
+                        <i class="color2 fa-brands fa-twitter"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(Window).scroll(function () {
+                if ($(this).scrollTop() && window.pageYOffset > 101) {
+                    $('header').addClass('sticky');
+                }
+                else {
+                    $('header').removeClass('sticky');
+                }
+            })
+        });
+    </script>
+    <script src="~/Assets/Admin/js/index.js"></script>
+</body>
+</html>

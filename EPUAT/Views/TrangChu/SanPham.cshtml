@@ -1,0 +1,145 @@
+﻿@model List<EPUAT.Models.SanPham>
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+<div class="body">
+    <div class="body_main">
+        <div class="body_top">
+            <div class="top-contentleft">
+                <a class="top-contentleft_text" href="/Trangchu/index">TRANG CHỦ</a>
+                <p> &nbsp; / &nbsp;&nbsp; </p>
+                <a class="top-contentleft_text" href="/Trangchu/SanPham" style="color: black;"><b>CỬA HÀNG</b></a>
+            </div>
+            <div class="top-contentright">
+                <p class="top-contentleft_text"> Hiển thị một kết quả duy nhất </p>
+                <select style="width: 255px;height: 38px;" id="option" name="option">
+                    <option class="top-contentleft_text" value="Thứ tự theo giá">
+                        Thứ tự theo giá
+                    </option>
+                    <option class="top-contentleft_text" value="Thứ tự theo giá: thấp đến cao">
+                        Thứ tự theo giá: thấp
+                        đến
+                        cao
+                    </option>
+                    <option class="top-contentleft_text" value="Thứ tự theo giá: cao xuống thấp">
+                        Thứ tự theo giá:
+                        cao
+                        xuống thấp
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="body_main_bt">
+        <div class="left_item">
+            <div class="listSP">
+                <div class="listSP_title">
+                    <h3>DANH MỤC SẢN PHẨM</h3>
+                </div>
+                <div>
+                        <a class="listSP_item" href="~/TrangChu/SanPham">Màn Hình Xe Hơi</a>
+                    </div>
+                    <div>
+                        <a class="listSP_item" href="~/TrangChu/SanPham1">Camera hành trình</a>
+                    </div>
+                    <div>
+                        <a class="listSP_item" href="~/TrangChu/SanPham2">Camera 360</a>
+                    </div>
+                    <div>
+                        <a class="listSP_item" href="~/TrangChu/SanPham3">Camera lùi</a>
+                    </div>
+            </div>
+            <div class="listSP " style="height: 450px;">
+                <div class="listSP_title">
+                    <h3>SẢN PHẨM</h3>
+                </div>
+                <a href="#">
+                    <div class="listSP_item_sp">
+                        <div>
+                            <img src="/images/DDPAI-360.jpg" class="list_img">
+                        </div>
+                        <div style=" text-decoration: none;">
+                            <p style="margin:5px 0px ;">Camera hành trình 360</p>
+                            <p style="margin:5px 0px ;">1,516,000 ₫</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="listSP_item_sp">
+                        <div>
+                            <img src="/images/Camera-360-omniview.jpg" class="list_img">
+                        </div>
+                        <div>
+                            <p style="margin:5px 0px ;">Camera 360 Omnivue</p>
+                            <p style="margin:5px 0px ;">18,900,000 ₫</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="listSP_item_sp">
+                        <div>
+                            <img src="/images/Camera-360-panorama-01.jpg" class="list_img">
+                        </div>
+                        <div>
+                            <p style="margin:5px 0px ;">Camera 360 Panorama</p>
+                            <p style="margin:5px 0px ;">16,900,000 ₫</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="listSP_item_sp">
+                        <div>
+                            <img src="/images/Omnivue-01.jpg" class="list_img">
+                        </div>
+                        <div>
+                            <p style="margin:5px 0px ;">Camera quan sát 360 độ</p>
+                            <p style="margin:5px 0px ;">18,899,000 ₫</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="listSP_item_sp">
+                        <div>
+                            <img src="/images/Esky-EC170-20.jpg" class="list_img">
+                        </div>
+                        <div>
+                            <p style="margin:5px 0px ;">Hệ thống camera lùi ..</p>
+                            <p style="margin:5px 0px ;">667,000 ₫</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="right_item">
+            <div class="item_SP">
+                @foreach (var item in Model)
+                {
+                    if (item.TB == 1)
+                    {
+                    <div class="frames_box_SP">
+                        <div style="overflow: hidden;">
+                            <a href="@Url.Action("Detail", "TrangChu", new {id = item.Id})">
+                                <img src="@item.images" alt="logo" class="frames_box_img_SP">
+                            </a>
+                        </div>
+                        <div class="frames_text">
+                            <p>@item.Name</p>
+                        </div>
+                        <div class="frames_text_price">
+                            <p>@string.Format("{0:#,0}", item.Gia)₫</p>
+                        </div>
+                        <div style="margin-top: 30px; text-align: center;">
+                            <a href="/Cart/AddToCart/@item.Id" class="frames_button_buy">THÊM VÀO GIỎ</a>
+                            @*@Html.ActionLink("THÊM VÀO GIỎ", "AddToCart", "Cart", new { ProductId = item.Id }, new { @class = "frames_button_buy" })*@
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+

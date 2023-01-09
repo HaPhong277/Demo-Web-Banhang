@@ -1,0 +1,71 @@
+﻿@model  EPUAT.Models.SanPham
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+    <div class="body_main">
+        <div class="Box_main">
+            <div class="Box_main_left">
+                <div class="left_top">
+                    <img class="SP_img" src="@Model.images" alt="">
+
+                </div>
+            </div>
+            <div class="Box_main_right">
+                <div class="right_title">
+                    <a class="top-contentleft_text" href="Trangchu.html">TRANG CHỦ</a>
+                    <p> &nbsp; / &nbsp;&nbsp; </p>
+                    <a class="top-contentleft_text" href="Sanpham.html" style="color: black;"><b>CỬA HÀNG</b></a>
+                </div>
+                <div>
+                    <h1 style="color:crimson">
+                        @Model.Name
+                    </h1>
+                </div>
+                <div>
+                    <h2>
+                        @string.Format("{0:#,0}", Model.Gia)₫
+                    </h2>
+                </div>
+                <div>
+                    <h2 style="margin-bottom:0px ;">
+                        Mô tả:
+                    </h2>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 310px;height: 50px;">
+                    <h4>CPU :</h4>
+                    <p> MT3562 Octa Core, ARM Cortext-A53</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 120px;height: 50px;">
+                    <h4>Tần số :</h4>
+                    <p>1.6GHz</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 200px;height: 50px;">
+                    <h4>Bộ nhớ RAM :</h4>
+                    <p> DDR3 2GB</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 310px;height: 50px;">
+                    <h4>Bộ nhớ ROM :</h4>
+                    <p>Tích hợp bộ nhớ trong 16GB</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 200px;height: 50px;">
+                    <h4>Màn Hình:</h4>
+                    <p> IPS 10Inch</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center; width: 200px;height: 50px;">
+                    <h4>Độ phân giải:</h4>
+                    <p> IPS 10Inch</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items:center; width: 300px;height: 50px;">
+                    @*<div>
+                        <input type="number" id="tentacles" name="tentacles" min="1" max="100" value="1">
+                    </div>*@
+                    <div>
+                        <a href="/Cart/AddToCart/@Model.Id" class="detail">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

@@ -1,0 +1,61 @@
+﻿@model EPUAT.Models.Khachhang
+
+@{
+    Layout = null;
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2>Xóa thông tin khách hàng</h2>
+            @using (Html.BeginForm("DeleteByMaKH", "KhachHang", new { MaKH = Model.MaKH }))
+            {
+                <div>
+                    @Html.LabelFor(m => m.TenKH)
+                    @Html.TextBoxFor(m => m.TenKH)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SDT)
+                    @Html.TextBoxFor(m => m.SDT)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.GioiTinh)
+                    @Html.TextBoxFor(m => m.GioiTinh)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.NgaySinh)
+                    @Html.TextBoxFor(m => m.NgaySinh)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.DiaChi)
+                    @Html.TextBoxFor(m => m.DiaChi)
+                </div>
+                <div>
+                    <input type="submit" value="Xoa" />
+                </div>
+            }
+        </div>
+        </div>
+</body>
+</html>
+
+
+

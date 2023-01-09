@@ -1,0 +1,69 @@
+﻿@model List<EPUAT.Models.Khachhang>
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2>Danh Sách Khách Hàng</h2>
+            <div>
+                @Html.ActionLink("Thêm Mới", "Add")
+                @using (Html.BeginForm("Search", "KhachHang", FormMethod.Get))
+                {
+                    @*<label>Lọc theo danh mục: </label>
+            <div>
+                @Html.DropDownList("category", "-- Tất cả --")
+            </div>*@
+                    <label>Lọc theo tên: </label>
+                    <div style="padding:20px 20px 20px 0px;display:flex">
+                        <div>
+                            @Html.TextBox("Search")
+                        </div>
+                        <div><input type="submit" value="Lọc" /></div>
+                    </div>
+                }
+
+                <table class="table">
+                    <thead class="thead-dark" style="background-color: #000000d9;color: aliceblue;">
+                    <th>#</th>
+                    <th>Tên Khách Hàng</th>mm
+                    <th>Số điện thoại</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Chức năng</th>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaKH</td>
+                            <td>@item.TenKH</td>
+                            <td>@item.SDT</td>
+                            <td>@item.GioiTinh</td>
+                            <td>@string.Format("{0:dd/MM/yyy}", item.NgaySinh)</td>
+                            <td>@item.Email</td>
+                            <td>@item.DiaChi</td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { MaKH = item.MaKH })
+                                @Html.ActionLink("Xóa", "Delete", new { MaKH = item.MaKH })
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+            </div>
+</body>
+</html>
+

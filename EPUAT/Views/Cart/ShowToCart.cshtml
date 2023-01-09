@@ -1,0 +1,177 @@
+﻿@model EPUAT.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="body">
+    <div style="width: 80%; height: 100%; background-color: white; margin: auto;padding-top: 20px;">
+        <div>
+            <div class="right_title" style="align-items:center ;">
+                <a class="top-contentleft_text" href="/TrangChu/index">TRANG CHỦ</a>
+                <p> &nbsp; / &nbsp;&nbsp; </p>
+                <a class="top-contentleft_text" href="/TrangChu/SanPham">SẢN PHẨM</a>
+            </div>
+        </div>
+        <div style="width: 100%; height: 50px;background-color: white;">
+            <div style="width: 300px;margin: auto  ;">
+                <h1 style="font-family:'Times New Roman', Times, serif;font-weight: 400;">Giỏ Hàng Của Bạn</h1>
+            </div>
+        </div>
+        @if (Model != null)
+        {
+            <!-- don hang -->
+            <table style="margin: auto;" class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        @*</tr>*@
+                </thead>
+                <tbody style="width: 100%; height: 150px;background-color: white; display: inline-table;justify-content:
+                space-between;align-items: center;margin: auto;margin-top: 10px; box-shadow: 0 0 5px #ccc;">
+                    @foreach (var item in Model.Items)
+                    {
+                        double total = Convert.ToDouble(item._shopping_Product.Gia.Value * item._shopping_Quantity);
+                        <tr>
+                            <td>
+                                <div>
+                                    <img src="@Url.Content(item._shopping_Product.images)" alt="sanpham" style="width:140px ;height:140px ;">
+                                </div>
+                            </td>
+                            <td>
+                                <div style="width:300px">
+                                    <p>Tên Sản Phẩm</p>
+                                    <h3 style="font-size: 20px;font-weight: 700;">@Html.DisplayFor(model => item._shopping_Product.Name) </h3>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="width:100px">
+                                    <p>Giá Tiền</p>
+                                    <h3 style="font-size: 18px;font-weight: 400;color:red">  @string.Format("{0:#,0}", item._shopping_Product.Gia)₫ </h3>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="width:100px">
+                                    <p style="margin-top:0px">Số lượng</p>
+                                    @using (Html.BeginForm("update", "Cart"))
+                                    {
+                                        <div style="display:flex">
+                                            <div>
+                                                <input type="hidden" value="@item._shopping_Product.Id" name="Id" />
+                                                <input style="width:20px" type="number" id="tentacles" name="quantity" min="1" value="@item._shopping_Quantity">
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="update" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                <div style="width:150px">
+                                    <p>Thành tiền</p>
+                                    <h3 style="font-size: 18px;font-weight: 400; color:red">
+                                        @*@string.Format("{0:#,0}", item.product_detail.Gia.GetValueOrDefault(0) * item.Quantity)₫*@
+                                        @*@Html.DisplayFor(model => item._shopping_Product.Gia.GetValueOrDefault(0) * item._shopping_Quantity))*@
+                                        @*@total*@
+                                        @string.Format("{0:#,0}", total)₫
+                                    </h3>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="margin-right: 10px;">
+                                    <a href="/Cart/RemoveCart/@item._shopping_Product.Id" style="padding-right:10px"><i style="color:black" class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot style="width: 100%; height: 50px;background-color: white; display: flex;justify-content:
+                space-between;align-items: center;margin: auto;margin-top: 10px; box-shadow: 0 0 5px #ccc;">
+                    <tr>
+
+                        <td colspan="6">
+                            @*Tổng tiền: @Model.Total()*@
+                            <div style="margin-left: 600px;display: flex;align-items: center;text-align: center;">
+                                <h3 style="font-size: 20px;font-weight: 700;">Tổng tiền:</h3>
+                                <p style="color:red">@string.Format("{0:#,0}", Model.Total())₫</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tfoot style="width: 100%; height: 100px; margin: auto;margin-top: 50px;display: flex ;
+                 justify-content: flex-end;align-items: center;margin-bottom: 100px;">
+                    <tr>
+
+                        <td colspan="6">
+                            @using (Html.BeginForm("CheckOut", "cart"))
+                            {
+                                <table>
+
+                                    @*<tr>
+                                        <td>MaKH</td>
+                                        <td> <input type="number" name="MaKH" /> </td>
+                                    </tr>*@
+                                    <tr>
+                                        <td>TenKH</td>
+                                        <td> <input type="text" name="TenKH" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td> <input type="text" name="Address" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SDT</td>
+                                        <td> <input type="number" name="SDT" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td> <input type="text" name="Email" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>gioitinh</td>
+                                        <td> <input type="text" name="gioitinh" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input style=" padding: 15px 50px; background-color: red; border-radius: 10px;
+                                 border-block-width: 1px; color: white; cursor:pointer;font-size:20px;font-weight: 500;"
+                                                   type="submit" value="Đặt Hàng" />
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                            }
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+        else
+        {
+            <div style="width: 100%; height: 50px;background-color: white;">
+                <div style="width:100%;margin: auto  ;">
+                    <h1 style="font-family:'Times New Roman', Times, serif;font-weight: 400;text-align:center">Chưa có sản phẩm trong giỏ hàng</h1>
+                </div>
+            </div>
+        }
+
+        <div style="width: 80%; height: 100px; margin: auto;display: flex ;
+                 justify-content: flex-start;align-items: center;margin-bottom: 100px;margin-top:-175px">
+            <div style="width: 50%; height: 100px;display: flex ;
+                justify-content: space-between;align-items: center;">
+                <a href="/TrangChu/Index"
+                   style=" padding:18px 50px ; background-color: rgb(243, 218, 218);border-radius: 10px;border: 1px solid red;">
+                    <h4 style="margin: 0;font-size: 20px;font-weight: 500;color: black;">Tiếp tục xem sản phẩm</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model List<EPUAT.Models.Dathang>
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2>Danh Sách đơn hàng </h2>
+            <div>
+                @Html.ActionLink("Thêm Mới", "Add")
+                @using (Html.BeginForm("Search", "DatHang", FormMethod.Get))
+                {
+                    @*<label>Lọc theo danh mục: </label>
+            <div>
+                @Html.DropDownList("category", "-- Tất cả --")
+            </div>*@
+                    <label>Lọc theo tên: </label>
+                    <div style="padding:20px 20px 20px 0px;display:flex">
+                        <div>
+                            @Html.TextBox("Search")
+                        </div>
+                        <div><input type="submit" value="Lọc" /></div>
+                    </div>
+                }
+
+                <table class="table">
+                    <thead class="thead-dark" style="background-color: #000000d9;color: aliceblue;">
+                    <th>#</th>
+                    <th>Tên khách hàng</th>
+                    <th>Thời gian đặt</th>mm
+                    <th>Trạng thái</th>
+                    <th>Địa chỉ</th>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaPhieuDat</td>
+                            <td>@item.TenKH</td>
+                            <td>@string.Format("{0:dd/MM/yyy}", item.ThoiGianDat)</td>
+                            <td>@item.TrangThai</td>
+                            <td>@item.DiaChi</td>
+                            @*<td>
+                        @Html.ActionLink("Sửa", "Edit", new { MaPhieuDat = item.MaPhieuDat })
+                        @Html.ActionLink("Xóa", "Delete", new { MaPhieuDat = item.MaPhieuDat })
+                    </td>*@
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+</body>
+</html>
+

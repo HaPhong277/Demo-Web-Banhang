@@ -1,0 +1,95 @@
+﻿@model EPUAT.Models.TaiKhoan
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>INSPINIA | Register</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Login</title>
+
+    <link href="~/Assets/Admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/Admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    Toastr style
+    <link href="~/Assets/Admin/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    Gritter
+    <link href="~/Assets/Admin/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="~/Assets/Admin/css/animate.css" rel="stylesheet">
+    <link href="~/Assets/Admin/css/style.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            background: url(/images/slider1-aero2-1920x933.jpg) no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="middle-box text-center loginscreen   animated fadeInDown">
+            <div>
+                <div>
+
+                    <h1 style=" color: #ff00005c ; font-size: 180px; font-weight: 800; letter-spacing: -10px; margin-bottom: 0px; margin-left: -280px;">EPUAUTO</h1>
+
+                </div>
+                <h3 style="color: wheat">Wellcome EPU AUTO</h3>
+                <p style="color: wheat">Create account to see it in action.</p>
+                <form class="m-t" role="form" action="login.html">
+                    <div class="form-group" style="display:flex">
+                        <h5 style="margin-left: 20px; margin-right: 2px; color: wheat">Tài Khoản </h5>
+                        @*<input name="Username" placeholder="Username" class="form-control" @Html.TextBoxFor(m => m.TaiKhoan1)>*@
+                        @Html.TextBoxFor(m => m.TaiKhoan1)
+
+                    </div>
+                    <div class="form-group" style="display:flex">
+                        <h5 style="margin-right: 13px; margin-left: 20px; color: wheat">Email </h5>
+                        @Html.TextBoxFor(m => m.Email)
+                        @*<input name="Email" type="email" class="form-control" placeholder="email" @Html.TextBoxFor(m => m.Email)>*@
+                    </div>
+                    <div class="form-group" style="display:flex">
+                        <h5 style="margin-right: 6px; margin-left: 20px; color: wheat ">Mật Khẩu </h5>
+                        @Html.TextBoxFor(m => m.MatKhau)
+                        @*<input name="password" type="password" placeholder="Password" class="form-control" @Html.TextBoxFor(m => m.MatKhau)>*@
+                    </div>
+                    <div class="form-group">
+                        <div style="color: wheat" class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+                    <p class="text-muted text-center"><small>Already have an account?</small></p>
+                    <a class="btn btn-sm btn-white btn-block" href="~/Admin/Home/DangNhap">Login</a>
+                </form>
+                <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+            </div>
+        </div>
+    }
+
+    Mainly scripts
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    iCheck
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+        });
+    </script>
+</body>
+
+</html>

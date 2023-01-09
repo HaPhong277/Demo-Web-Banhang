@@ -1,0 +1,42 @@
+﻿@model EPUAT.Models.SanPham
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2>Xóa thông tin Danh Mục</h2>
+            @using (Html.BeginForm("DeleteByID", "SanPham", new { ID = Model.Id }))
+            {
+                <div>
+                    @Html.LabelFor(m => m.Id) :
+                    @Html.DisplayFor(m => m.Id)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Name) :
+                    @Html.DisplayFor(m => m.Name)
+                </div>
+                <div>
+                    <input type="submit" value="Xoa" />
+                </div>
+            }
+        </div>
+        </div>
+</body>
+</html>
+

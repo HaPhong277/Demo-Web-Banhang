@@ -1,0 +1,336 @@
+﻿@model List<EPUAT.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="body">
+    <div class="body-top">
+        <img id="img" src="~/images/slider1-aero3-1920x943.jpg" alt="">
+        <div class="click">
+            <div class="click_icon" id="hiden">
+                <a class="button_icon" onclick="prev()">
+                    <i class="icon icon_color fa-solid fa-chevron-left"></i>
+                </a>
+            </div>
+            <div class="position_box">
+                <h1 class="title_main" id="caption" style="font-size: 50px;">EPUAUTO</h1>
+                <h2 class="title_main" id="caption1">Car Accessry</h2>
+                <p class="title_main" id="caption2">Chúng tôi chuyên cung cấp các mặt hàng điện tử chuyên dụng cho xe hơi. Uy tín – Chất lượng – Dịch vụ tốt.</p>
+                <div style="margin-top:40px ;" id="caption3">
+                    <a href="#" class="a_button">
+                        MUA NGAY
+                    </a>
+                </div>
+            </div>
+            <div class="click_icon" id="hiden1">
+                <a class="button_icon" onclick="next()">
+                    <i class="icon icon_color fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height: 140px ;padding-top: 50px;">
+        <div class="category">
+            <div class="boderleft"></div>
+            <div>
+                <h1 style="color: #2b2e4a;font-size: 20px">
+                    Màn Hình Xe Hơi
+                </h1>
+            </div>
+            <div class="boderright"></div>
+        </div>
+        <div style="margin: auto; width: 100px;">
+            <a href="/TrangChu/SanPham" class="directional">
+                <p style="font-size: 18px">Xem thêm</p> <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="frames">
+        @foreach (var item in Model)
+        {
+            if (item.TB == 1)
+            {
+                <div class="frames_box">
+                    <div>
+                        <a href="@Url.Action("Detail", "TrangChu", new {id = item.Id})">
+                            <img src="@item.images" alt="logo" class="frames_box_img">
+                        </a>
+                    </div>
+                    <div class="frames_text">
+                        <p>@item.Name</p>
+                    </div>
+                    <div class="frames_text_price">
+                        <p>@string.Format("{0:#,0}", item.Gia)₫</p>
+                    </div>
+                    <div style="margin-top: 30px; text-align: center;">
+                        @*@Html.ActionLink("THÊM VÀO GIỎ", "ShowToCart", "Cart", new { id = item.Id }, new { @class = "frames_button_buy" })*@
+                        <a href="/Cart/AddToCart/@item.Id" class="frames_button_buy">THÊM VÀO GIỎ</a>
+
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div style="width: 100%;height: 140px ;padding-top: 50px;">
+        <div class="category">
+            <div class="boderleft"></div>
+            <div>
+                <h1 style="color: #2b2e4a;font-size: 20px">
+                    CAMERA 360
+                </h1>
+            </div>
+            <div class="boderright"></div>
+        </div>
+        <div style="margin: auto; width: 100px;">
+            <a href="/TrangChu/SanPham" class="directional">
+                <p style="font-size: 18px;">Xem thêm</p> <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="frames">
+        @foreach (var item in Model)
+        {
+            if (item.TB == 2)
+            {
+                <div class="frames_box">
+                    <div>
+                        <a href="@Url.Action("Detail", "TrangChu", new {id = item.Id})">
+                            <img src="@item.images" alt="logo" class="frames_box_img">
+                        </a>
+                    </div>
+                    <div class="frames_text">
+                        <p>@item.Name</p>
+                    </div>
+                    <div class="frames_text_price">
+                        <p>@string.Format("{0:#,0}", item.Gia)₫</p>
+                    </div>
+                    <div style="margin-top: 30px; text-align: center;">
+                        @*@Html.ActionLink("THÊM VÀO GIỎ", "ShowToCart", "Cart", new { id = item.Id }, new { @class = "frames_button_buy" })*@
+                        <a href="/Cart/AddToCart/@item.Id" class="frames_button_buy">THÊM VÀO GIỎ</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="frames_background">
+        <div class="frames_background_item">
+            <h1 class="item_text">BIG SALE</h1>
+            <h1 class="item_text">KHUYẾN MÃI GIÁ SỐC</h1>
+            <h2 class="item_text">Chương trình khuyến mãi với nhiều ưu đãi đặc biệt</h2>
+            <div style="text-align: center;">
+                <a href="" class="item_text_button">Xem thêm</a>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height: 140px ;padding-top: 50px;">
+        <div class="category">
+            <div class="boderleft"></div>
+            <div>
+                <h1 style="color: #2b2e4a; font-size: 20px;">
+                    CAMERA HÀNH TRÌNH
+                </h1>
+            </div>
+            <div class="boderright"></div>
+        </div>
+        <div style="margin: auto; width: 100px;">
+            <a href="/TrangChu/SanPham" class="directional">
+                <p style="font-size: 18px;">Xem thêm</p> <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="frames">
+        @foreach (var item in Model)
+        {
+            if (item.TB == 3)
+            {
+                <div class="frames_box">
+                    <div>
+                        <a href="@Url.Action("Detail", "TrangChu", new {id = item.Id})">
+                            <img src="@item.images" alt="logo" class="frames_box_img">
+                        </a>
+                    </div>
+                    <div class="frames_text">
+                        <p>@item.Name</p>
+                    </div>
+                    <div class="frames_text_price">
+                        <p>@string.Format("{0:#,0}", item.Gia)₫</p>
+                    </div>
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="/Cart/AddToCart/@item.Id" class="frames_button_buy">THÊM VÀO GIỎ</a>
+                        @*@Html.ActionLink("THÊM VÀO GIỎ", "ShowToCart", "Cart", new { id = item.Id }, new { @class = "frames_button_buy" })*@
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div style="width: 100%;height: 140px ;padding-top: 40px;">
+        <div class="category">
+            <div class="boderleft"></div>
+            <div>
+                <h1 style="color: #2b2e4a; font-size: 20px;">
+                    CAMERA LÙI
+                </h1>
+            </div>
+            <div class="boderright"></div>
+        </div>
+        <div style="margin: auto; width: 100px;">
+            <a href="/TrangChu/SanPham" class="directional">
+                <p style="font-size: 18px;">Xem thêm</p> <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="frames">
+        @foreach (var item in Model)
+        {
+            if (item.TB == 4)
+            {
+                <div class="frames_box">
+                    <div>
+                        <a href="@Url.Action("Detail", "TrangChu", new {id = item.Id})">
+                            <img src="@item.images" alt="logo" class="frames_box_img">
+                        </a>
+                    </div>
+                    <div class="frames_text">
+                        <p>@item.Name</p>
+                    </div>
+                    <div class="frames_text_price">
+                        <p>@string.Format("{0:#,0}", item.Gia)₫</p>
+                    </div>
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="/Cart/AddToCart/@item.Id" class="frames_button_buy">THÊM VÀO GIỎ</a>
+                        @*@Html.ActionLink("THÊM VÀO GIỎ", "ShowToCart", "Cart", new { id = item.Id }, new { @class = "frames_button_buy" })*@
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div style="width: 100%;height: 140px ;padding-top: 80px;">
+        <div class="category">
+            <div class="boderleft"></div>
+            <div>
+                <h1 style="color: #2b2e4a; font-size: 20px;">
+                    TIN TỨC – SỰ KIỆN
+                </h1>
+            </div>
+            <div class="boderright"></div>
+        </div>
+        <div style="margin: auto; width: 100px;">
+            <a href="/TrangChu/SanPham" class="directional">
+                <p style="font-size: 18px">Xem thêm</p> <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="sliders" id="slider">
+            <i onclick="slider_left()" class="slide_btn_left icon icon_color fa-solid fa-chevron-left"></i>
+            <div class="slide" id="slide1">
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="/images/slider1-aero3-1920x943.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px; margin: 0px;">
+                            Duis luctus elit nisi, et cursus magna pellentesque
+                            non.
+                        </h5>
+                        <p style="font-size: 12px;">
+                            Lorem ipsum dolor sit amet,
+                            consectetur adipiscing
+                            elit. Sed dapibus, massa
+                            non viverra
+                            consequat, tellus ...
+                        </p>
+                    </div>
+                </div>
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="/images/slider2-aero3-1920x943.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px;margin: 0px;">
+                            Mauris tristique pretium tempus. Vestibulum et accumsan
+                            magna.
+                        </h5>
+                        <p style="font-size: 12px">
+                            Donec tempus eu ligula sed blandit. Vivamus vel enim ac quam iaculis
+                            rutrum. Sed nisi ...
+                        </p>
+                    </div>
+                </div>
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="/images/slider3-aero3-1920x943.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px;margin: 0px;">
+                            Aliquam placerat nisl nec imperdiet vehicula. Phasellus
+                            tempus ligula id orci finibus feugiat.
+                        </h5>
+                        <p style="font-size: 12px;">
+                            n rutrum tempus purus, ut euismod dui facilisis ac. Fusce semper
+                            dignissim diam a egestas. ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <i onclick="slider_right()" class="slide_btn_right icon icon_color fa-solid fa-chevron-right"></i>
+            <div class="slide" id="slide12">
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="/images/slider1-aero2-1920x933.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px; margin: 0px;">
+                            Duis luctus elit nisi, et cursus magna pellentesque
+                            non.
+                        </h5>
+                        <p style="font-size: 12px;">
+                            Lorem ipsum dolor sit amet,
+                            consectetur adipiscing
+                            elit. Sed dapibus, massa
+                            non viverra
+                            consequat, tellus ...
+                        </p>
+                    </div>
+                </div>
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="~/images/slider3-aero1-1920x846.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px;margin: 0px;">
+                            Mauris tristique pretium tempus. Vestibulum et accumsan
+                            magna.
+                        </h5>
+                        <p style="font-size: 12px">
+                            Donec tempus eu ligula sed blandit. Vivamus vel enim ac quam iaculis
+                            rutrum. Sed nisi ...
+                        </p>
+                    </div>
+                </div>
+                <div class="slider_box">
+                    <div>
+                        <img class="sliders_image" src="/images/slider2-aero3-1920x943.jpg">
+                    </div>
+                    <div class="slider_text">
+                        <h5 style="font-size: 14px;margin: 0px;">
+                            Aliquam placerat nisl nec imperdiet vehicula. Phasellus
+                            tempus ligula id orci finibus feugiat.
+                        </h5>
+                        <p style="font-size: 12px;">
+                            n rutrum tempus purus, ut euismod dui facilisis ac. Fusce semper
+                            dignissim diam a egestas. ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

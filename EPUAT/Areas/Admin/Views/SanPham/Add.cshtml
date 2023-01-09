@@ -1,0 +1,56 @@
+﻿@model EPUAT.Models.SanPham
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2> Thêm mới danh mục sản phẩm</h2>
+            @using (Html.BeginForm("Add", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name)
+                </div>
+                <div>
+                    <label>Choose file:</label>
+                    <input type="file" name="fileImg" />
+                    @Html.ViewBag.images
+                </div>
+                @*<div>
+                    @Html.LabelFor(m => m.images)
+                    @Html.TextBoxFor(m => m.images)
+                </div>*@
+                <div>
+                    @Html.LabelFor(m => m.Gia)
+                    @Html.TextBoxFor(m => m.Gia)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.giamgia)
+                    @Html.TextBoxFor(m => m.giamgia)
+                </div>
+                <div>
+                    <input type="submit" value="Thêm" />
+                </div>
+            }
+        </div>
+        </div>
+</body>
+</html>
+
+

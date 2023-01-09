@@ -1,0 +1,64 @@
+﻿@model EPUAT.Models.Khachhang
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="position: absolute; width: 1200px; right: 10px">
+            <h2> Thêm mới Khách Hàng</h2>
+            @using (Html.BeginForm())
+            {
+                <div>
+                    @Html.LabelFor(m => m.TenKH)
+                    @Html.TextBoxFor(m => m.TenKH)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SDT)
+                    @Html.TextBoxFor(m => m.SDT)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.GioiTinh)
+                    @Html.TextBoxFor(m => m.GioiTinh)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.NgaySinh)
+                    @Html.TextBoxFor(m => m.NgaySinh)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.DiaChi)
+                    @Html.TextBoxFor(m => m.DiaChi)
+                </div>
+                <div>
+                    <input type="submit" value="Thêm" />
+                </div>
+                <div>
+
+                </div>
+            }
+        </div>
+        </div>
+</body>
+</html>
+
+
+

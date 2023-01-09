@@ -1,0 +1,32 @@
+﻿@model EPUAT.Models.SanPham
+
+@{
+    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/ViewPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div style="">
+        <div style="position: absolute; width: 1200px; right: 10px">
+
+            <h2>Sản Phẩm : @Model.Name</h2>
+            <div style="display:flex">
+
+                <img alt="@Model.images" src="@Model.images" width="350" height="350" />
+                <div style="padding-top:50px">
+                    <h2>Mô tả </h2>
+                    <p>@Model.Mota</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
